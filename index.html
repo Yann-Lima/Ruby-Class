@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+
+    <form onsubmit="limparCaracteres(); return false;">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF válido">
+
+        <br>
+
+        <label for="dob">Data de Nascimento:</label>
+        <input type="text" id="dob" name="dob" placeholder="DD/MM/AAAA" pattern="\d{2}/\d{2}/\d{4}" title="Digite uma data de nascimento válida">
+
+        <br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <br>
+
+    <div>
+        <input type="hidden" id="resultado" readonly>
+    </div>
+
+    <script>
+        function limparCaracteres() {
+            var cpfInput = document.getElementById('cpf');
+            var dobInput = document.getElementById('dob');
+            var resultadoInput = document.getElementById('resultado');
+
+            // Remove caracteres especiais do CPF
+            var cpfSemEspeciais = cpfInput.value.replace(/[^\d]/g, '');
+
+            // Remove caracteres especiais da data de nascimento
+            var dobSemEspeciais = dobInput.value.replace(/[^\d\/]/g, '');
+
+            // Exibe o resultado no campo de resultado
+            resultadoInput.value = "CPF: " + cpfSemEspeciais + ", Data de Nascimento: " + dobSemEspeciais;
+        }
+    </script>
+
+</body>
+</html>
